@@ -15,3 +15,5 @@ This project contains an automated tests for validate the behavior of the Urban 
 1. Install dependencies:
    ```bash
    npm install
+
+<!-- Final submission confirmed -->
