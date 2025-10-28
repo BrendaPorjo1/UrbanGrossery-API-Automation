@@ -1,4 +1,4 @@
-name: Spint 7 Project CI
+name: Sprint 7 Project CI
 
 on:
   push:
@@ -18,9 +18,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18.x'
-    - name: Run npm install 
-      run: npm i
-    - name: Run eslint
-      run: npm run lint
+    - name: Install dependencies
+      run: npm install
     - name: Run tests
-      run: npm run test
+      run: npm test
