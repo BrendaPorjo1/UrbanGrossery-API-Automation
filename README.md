@@ -1,1 +1,17 @@
-# Sprint 7 project
+# Sprint 7 Project HM07-QA-US
+
+This project contains an automated tests for validate the behavior of the Urban Grocers API. The tests cover HTTP methods: GET, POST, PUT, and DELETE, and are intended to identify common issues as incorrect status codes or unexpected response formats.
+
+## Technologies and Techniques Used
+
+- **JavaScript** – for writing the test logic
+- **Jest** – testing framework used to run and structure the tests
+- **Node.js** – runtime environment
+- **node-fetch** – library used to send HTTP requests to the API
+- **REST API** – the tests interact with RESTful endpoints
+
+## How to Run the Tests
+
+1. Install dependencies:
+   ```bash
+   npm install
