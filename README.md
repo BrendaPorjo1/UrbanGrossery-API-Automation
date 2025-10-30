@@ -1,6 +1,6 @@
 # Sprint 7 Project HM07-QA-US
 
-This project contains an automated tests for validate the behavior of the Urban Grocers API. The tests cover HTTP methods: GET, POST, PUT, and DELETE, and are intended to identify common issues as incorrect status codes or unexpected response formats.
+This project contains an automated tests for validate the behavior of the Urban Grocers API. The tests cover HTTP methods: GET, POST, PUT, and DELETE, and are intended to identify common issues as incorrect status codes or unexpected response formats. This project includes automated tests for the `/kits` and `/orders` endpoints, based on the Urban Grocers API documentation. Each test validates the expected behavior of the corresponding resource.
 
 ## Technologies and Techniques Used
 
