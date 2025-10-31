@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-undef
 const config = require('../config');
 
-const kitId = 7;
+let kitId = 1;
 
 test('DELETE /kits/:id should return status 200', async () => {
   try {
@@ -13,6 +13,9 @@ test('DELETE /kits/:id should return status 200', async () => {
     console.error(error);
   }
 });
+
+kitId = 2;
+
 test('DELETE /kits/:id should confirm deletion', async () => {
   try {
     const response = await fetch(`${config.API_URL}/api/v1/kits/${kitId}`, {
@@ -21,6 +24,7 @@ test('DELETE /kits/:id should confirm deletion', async () => {
     const data = await response.json();
     expect(data).toHaveProperty('message');
     expect(data.message).toMatch(/successfully delete/i);
+
   } catch (error) {
     console.error(error);
   }

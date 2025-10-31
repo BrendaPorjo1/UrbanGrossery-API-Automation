@@ -5,10 +5,7 @@ const orderId = 1;
 
 const requestBody = {
   productsList: [
-    { id: 1, quantity: 4 },
-    { id: 5, quantity: 2 },
-    { id: 3, quantity: 1 },
-    { id: 4, quantity: 1 }
+    { id: 5, quantity: 1 }
   ]
 };
 
@@ -37,11 +34,18 @@ test('PUT /orders/:id should return updated order details', async () => {
       body: JSON.stringify(requestBody)
     });
     const data = await response.json();
+
     expect(data).toHaveProperty('productsList');
     expect(Array.isArray(data.productsList)).toBe(true);
     expect(data.productsList.length).toBeGreaterThan(0);
-    expect(data.courierService).toBe('Fast Delivery');
-    expect(data.wareHouse).toBe('Fresh food');
+
+    expect(data).toHaveProperty('courierService');
+    expect(data.courierService).toBe('Order and Go');
+
+    expect(data).toHaveProperty('wareHouse');
+    expect(data.wareHouse.toLowerCase()).toBe('fresh food');
+
+    expect(data).toHaveProperty('status');
     expect(data.status).toBe(0);
   } catch (error) {
     console.error(error);

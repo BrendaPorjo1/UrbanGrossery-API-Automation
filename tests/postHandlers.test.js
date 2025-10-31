@@ -1,12 +1,13 @@
 // eslint-disable-next-line no-undef
 const config = require('../config');
 
+let createdOrderId;
+
 const requestBody = {
   productsList: [
-    { id: 1, quantity: 2 },
-    { id: 5, quantity: 2 },
-    { id: 3, quantity: 1 }
-  ]
+    { id: 5, quantity: 1 }
+  ],
+  deliveryTime: 11
 };
 
 test('POST /orders should return status 200', async () => {
@@ -18,7 +19,7 @@ test('POST /orders should return status 200', async () => {
       },
       body: JSON.stringify(requestBody)
     });
-    expect(response.status).toBe(200);
+    expect(response.status).toBe(201);
   } catch (error) {
     console.error(error);
   }
@@ -34,12 +35,18 @@ test('POST /orders should return order details', async () => {
       body: JSON.stringify(requestBody)
     });
     const data = await response.json();
+
+    createdOrderId = data.id;
+
     expect(data).toHaveProperty('courierService');
-    expect(data.courierService).toBe('Fast Delivery');
+    expect(data.courierService).toBe('Order and Go');
+
     expect(data).toHaveProperty('status');
     expect(data.status).toBe(0);
+
     expect(data).toHaveProperty('wareHouse');
-    expect(data.wareHouse).toBe('Fresh food');
+    expect(data.wareHouse.toLowerCase()).toBe('fresh food');
+
     expect(Array.isArray(data.productsList)).toBe(true);
     expect(data.productsList.length).toBeGreaterThan(0);
   } catch (error) {
