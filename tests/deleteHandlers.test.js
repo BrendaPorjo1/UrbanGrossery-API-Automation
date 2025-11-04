@@ -22,8 +22,9 @@ test('DELETE /kits/:id should confirm deletion', async () => {
       method: 'DELETE'
     });
     const data = await response.json();
-    expect(data).toHaveProperty('message');
-    expect(data.message).toMatch(/successfully delete/i);
+    expect(data).toEqual({
+    "ok": true
+});
 
   } catch (error) {
     console.error(error);

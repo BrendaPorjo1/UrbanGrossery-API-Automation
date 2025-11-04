@@ -1,16 +1,29 @@
 // eslint-disable-next-line no-undef
 const config = require('../config');
 
-const orderId = 1;
-
 const requestBody = {
   productsList: [
     { id: 5, quantity: 1 }
   ]
 };
+const requestBodyPost = {
+  productsList: [
+    { id: 5, quantity: 1 }
+  ],
+  deliveryTime: 11
+};
+
 
 test('PUT /orders/:id should return status 200', async () => {
-  try {
+  try {const responsePost = await fetch(`${config.API_URL}/api/v1/orders`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBodyPost)
+      });
+     const dataPost = await responsePost.json()
+     const orderId = dataPost.id
     const response = await fetch(`${config.API_URL}/api/v1/orders/${orderId}`, {
       method: 'PUT',
       headers: {
@@ -25,7 +38,15 @@ test('PUT /orders/:id should return status 200', async () => {
 });
 
 test('PUT /orders/:id should return updated order details', async () => {
-  try {
+  try {const responsePost = await fetch(`${config.API_URL}/api/v1/orders`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBodyPost)
+      });
+     const dataPost = await responsePost.json()
+     const orderId = dataPost.id
     const response = await fetch(`${config.API_URL}/api/v1/orders/${orderId}`, {
       method: 'PUT',
       headers: {
