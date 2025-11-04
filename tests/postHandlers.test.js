@@ -35,11 +35,9 @@ test('POST /orders should return order details', async () => {
       body: JSON.stringify(requestBody)
     });
     const data = await response.json();
-
-    createdOrderId = data.id;
-
-    expect(data).toHaveProperty('courierService');
-    expect(data.courierService).toBe('Order and Go');
+	
+	expect(data.courierService).toBe('Order and Go');
+	expect(data).toHaveProperty('status');
 
     expect(data).toHaveProperty('status');
     expect(data.status).toBe(0);
